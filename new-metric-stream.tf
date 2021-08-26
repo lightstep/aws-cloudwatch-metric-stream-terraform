@@ -151,6 +151,7 @@ data "aws_iam_policy_document" "lightstep_firehose_s3_backup" {
 ## Kinesis Firehose - S3 error/backup bucket
 resource "aws_s3_bucket" "lightstep_firehose_backup" {
   bucket = "${var.firehose_name}-firehose-s3-backup-${data.aws_caller_identity.current.account_id}"
+  force_destroy = true
 }
 
 ## no public access allowed to the backup bucket
