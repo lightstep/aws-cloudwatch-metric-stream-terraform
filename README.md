@@ -2,7 +2,8 @@
 
 
 ### Prerequisites
-1. A Lightstep project access token
+1. [Terraform](https://learn.hashicorp.com/tutorials/terraform/install-cli)
+1. A Lightstep project [access token](https://docs.lightstep.com/docs/create-and-manage-access-tokens)
 1. AWS Access Key/Secret with IAM permissions to create the following resources:
     * aws_cloudwatch_metric_stream 
     * aws_iam_role
