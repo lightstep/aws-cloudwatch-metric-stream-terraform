@@ -1,5 +1,15 @@
 # aws-cloudwatch-metric-stream-terraform
 
+
+## Prerequisites
+1. A Lightstep project access token
+1. AWS Access Key/Secret with IAM permissions to create the following resources:
+    * aws_cloudwatch_metric_stream 
+    * aws_iam_role
+    * aws_iam_role_policy
+    * aws_kinesis_firehose_delivery_stream
+    * aws_s3_bucket
+    * aws_s3_bucket_public_access_block
 ## Installation
 
 ```BASH
