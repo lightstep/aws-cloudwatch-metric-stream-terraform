@@ -1,7 +1,7 @@
 # aws-cloudwatch-metric-stream-terraform
 
 
-## Prerequisites
+### Prerequisites
 1. A Lightstep project access token
 1. AWS Access Key/Secret with IAM permissions to create the following resources:
     * aws_cloudwatch_metric_stream 
@@ -10,7 +10,7 @@
     * aws_kinesis_firehose_delivery_stream
     * aws_s3_bucket
     * aws_s3_bucket_public_access_block
-## Installation
+### Installation
 
 ```BASH
 % git clone git@github.com:lightstep/aws-cloudwatch-metric-stream-terraform.git
@@ -35,5 +35,5 @@ var.lightstep_access_token
 
 It may take up to 15 minutes for data to appear in your Lightstep project depending on your chosen values for `buffer_interval` (default: 5 min) and `buffer_size` (default: 5 Mib).
 
-## Options
+### Options
 All options are documented in `variables.tf` and `example.tfvars`
