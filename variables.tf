@@ -53,3 +53,9 @@ variable "firehose_name" {
   type      = string
   default   = "lightstep"
 }
+
+variable "aws_region" {
+  description = "The AWS region associated with your CloudWatch metric stream and Kinesis firehose"
+  type        = string
+  default     = "us-west-2"
+}

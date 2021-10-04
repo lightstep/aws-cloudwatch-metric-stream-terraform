@@ -15,6 +15,11 @@ namespace_list = [
   # ...
 ]
 
+## OPTIONAL - select your AWS region
+## The AWS region associated with your CloudWatch metric stream and Kinesis firehose,
+## if not the default (us-west-2).
+# aws_region = "us-west-2"
+
 
 #####################
 ## Custom settings ##
