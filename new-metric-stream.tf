@@ -161,6 +161,14 @@ data "aws_iam_policy_document" "lightstep_firehose_s3_backup" {
 resource "aws_s3_bucket" "lightstep_firehose_backup" {
   bucket = "${var.firehose_name}-firehose-s3-backup-${data.aws_caller_identity.current.account_id}"
   force_destroy = true
+  lifecycle_rule {
+    id      = "expiration"
+    enabled = true
+
+    expiration {
+        days = var.expiration_days
+    }
+  }
 }
 
 ## no public access allowed to the backup bucket
