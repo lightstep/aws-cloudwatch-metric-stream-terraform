@@ -59,3 +59,9 @@ variable "aws_region" {
   type        = string
   default     = "us-west-2"
 }
+
+variable "expiration_days" {
+  description = "How many days to keep failed requests in S3"
+  type = number
+  default = 90
+}

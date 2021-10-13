@@ -25,6 +25,9 @@ namespace_list = [
 ## Custom settings ##
 ##################### 
 
+## Expiration
+# expiration_days = 90
+
 ## Endpoints
 ## ---------
 
