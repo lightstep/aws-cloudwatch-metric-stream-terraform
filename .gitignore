@@ -29,3 +29,7 @@ override.tf.json
 
 # Include tfplan files to ignore the plan output of command: terraform plan -out=tfplan
 # example: *tfplan*
+
+# only allow the example tfvars.  Nothing else that users may create while testing or applying.
+*.tfvars
+!example.tfvars

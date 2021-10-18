@@ -30,8 +30,8 @@ var.lightstep_access_token
 
 
 # The above is the minimal install with default values.
-# For custom install, edit example.tfvars.  Then run:
-% terraform apply -var-file="example.tfvars"
+# For custom install, copy example.tfvars (eg: `cp example.tfvars my-vars.tfvars`), edit the new file, then run:
+% terraform apply -var-file="my-vars.tfvars"
 ```
 
 It may take up to 15 minutes for data to appear in your Lightstep project depending on your chosen values for `buffer_interval` (default: 5 min) and `buffer_size` (default: 5 Mib).

@@ -4,6 +4,12 @@ variable "lightstep_access_token" {
   sensitive = true
 }
 
+variable "external_id" {
+  description = "A randomly generated alphabetical string used to autheticate between Lightstep and your AWS account. Default: <empty>"
+  type    = string
+  default = ""
+}
+
 variable "namespace_list" {
   description = "List of namespaces to include in metric stream.  Default: ALL"
   type    = list(string)
