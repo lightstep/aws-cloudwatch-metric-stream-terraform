@@ -1,18 +1,5 @@
 
-terraform {
-  required_providers {
-    aws = {
-      source = "hashicorp/aws"
-      version = ">= 3.42.0"
-    }
-  }
-}
 
-provider "aws" {
-  region = var.aws_region
-}
-
-data "aws_caller_identity" "current" {}
 
 
 resource "aws_cloudwatch_metric_stream" "main" {
@@ -179,4 +166,7 @@ resource "aws_s3_bucket_public_access_block" "backup_bucket_no_public_access" {
   restrict_public_buckets = true
   ignore_public_acls = true
 }
+
+
+## roles required for resource enrichment service
 
