@@ -31,12 +31,6 @@ namespace_list = [
 ## Expiration
 # expiration_days = 90
 
-## Endpoints
-## ---------
-
-## Staging
-# ingest_endpoint_name = "Staging Lightstep ingest"
-# ingest_endpoint = "https://ingest.staging.lightstep.com/cwstream"
 
 ## performance levers
 ## ------------------
