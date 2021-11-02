@@ -19,13 +19,13 @@ variable "namespace_list" {
 variable "ingest_endpoint" {
   description = "URL of Lightstep ingest"
   type = string
-  default = "https://ingest.lightstep.com/cwstream"
+  default = "https://ingest.staging.lightstep.com/cwstream"
 }
 
 variable "ingest_endpoint_name" {
   description = "Name of Lightstep ingest"
   type = string
-  default = "Lightstep ingest"
+  default = "Lightstep staging"
 }
 
 variable "buffer_size" {
@@ -70,4 +70,10 @@ variable "expiration_days" {
   description = "How many days to keep failed requests in S3"
   type = number
   default = 90
+}
+
+variable "upgrade_to_streams" {
+  description = "Set to true if you are upgrading from our previous AWS integration to our Metric Streams integration. Otherwise you may see errors relating to policies already existing."
+  type = bool
+  default = false
 }
