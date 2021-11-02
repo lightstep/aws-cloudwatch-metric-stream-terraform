@@ -19,13 +19,13 @@ variable "namespace_list" {
 variable "ingest_endpoint" {
   description = "URL of Lightstep ingest"
   type = string
-  default = "https://ingest.staging.lightstep.com/cwstream"
+  default = "https://ingest.lightstep.com/cwstream"
 }
 
 variable "ingest_endpoint_name" {
   description = "Name of Lightstep ingest"
   type = string
-  default = "Lightstep staging"
+  default = "Lightstep ingest"
 }
 
 variable "buffer_size" {
