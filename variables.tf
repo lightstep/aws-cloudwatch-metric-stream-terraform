@@ -71,3 +71,9 @@ variable "expiration_days" {
   type = number
   default = 90
 }
+
+variable "upgrade_to_streams" {
+  description = "Set to true if you are upgrading from our previous AWS integration to our Metric Streams integration. Otherwise you may see errors relating to policies already existing."
+  type = bool
+  default = false
+}

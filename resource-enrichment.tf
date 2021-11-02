@@ -5,18 +5,6 @@
 # It creates and attaches the policy LightstepAWSIntegrationPolicy, which allows
 # reading of EC2 instance data and CloudWatch metrics.
 #
-# Use:
-#
-# This snippet is intended to be sent to one of Lightstep's customers. They
-# will replace [add id here] with their external id of choice and then run
-# `terraform apply`. The customer will then send their TAM:
-#   1. The ARN of the newly created LightstepAWSIntegrationRole role
-#   2. The external ID chosen, if any
-#
-# Requirements:
-#
-#  - AWS CLI tool is installed
-#  - AWS credentials are configured locally
 
 
 resource "aws_iam_role" "lightstep_role" {
