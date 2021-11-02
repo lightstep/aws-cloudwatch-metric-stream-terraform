@@ -5,21 +5,13 @@
 # It creates and attaches the policy LightstepAWSIntegrationPolicy, which allows
 # reading of EC2 instance data and CloudWatch metrics.
 #
-# Use:
-#
-# This snippet is intended to be sent to one of Lightstep's customers. They
-# will replace [add id here] with their external id of choice and then run
-# `terraform apply`. The customer will then send their TAM:
-#   1. The ARN of the newly created LightstepAWSIntegrationRole role
-#   2. The external ID chosen, if any
-#
-# Requirements:
-#
-#  - AWS CLI tool is installed
-#  - AWS credentials are configured locally
+# This file does not need to run if the customer has previously set up Lightstep's AWS integration 
+# prior to the release of the Metric Streams integration. 
+# Please set the `upgrade_to_streams` variable to `true` before applying this terraform.
 
 
 resource "aws_iam_role" "lightstep_role" {
+  count       = var.upgrade_to_streams ? 0 : 1
   name        = "LightstepAWSIntegrationRole"
   description = "Role that Lightstep will assume as part of CloudWatch integration"
 
@@ -45,6 +37,7 @@ EOF
 }
 
 resource "aws_iam_policy" "lightstep_policy" {
+  count       = var.upgrade_to_streams ? 0 : 1
   name        = "LightstepAWSIntegrationPolicy"
   description = "Policy associated with LightstepAWSIntegrationRole"
 
@@ -67,6 +60,7 @@ EOF
 }
 
 resource "aws_iam_role_policy_attachment" "lightstep_attach" {
-  role       = aws_iam_role.lightstep_role.name
-  policy_arn = aws_iam_policy.lightstep_policy.arn
+  count      = var.upgrade_to_streams ? 0 : 1
+  role       = aws_iam_role.lightstep_role[0].name
+  policy_arn = aws_iam_policy.lightstep_policy[0].arn
 }
