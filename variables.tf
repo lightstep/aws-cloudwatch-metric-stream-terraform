@@ -5,7 +5,7 @@ variable "lightstep_access_token" {
 }
 
 variable "external_id" {
-  description = "A randomly generated alphabetical string used to autheticate between Lightstep and your AWS account. Default: <empty>"
+  description = "A randomly generated string used to autheticate between Lightstep and your AWS account. Default: <empty>"
   type    = string
 }
 
