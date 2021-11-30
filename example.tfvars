@@ -16,7 +16,7 @@ namespace_list = [
 ]
 
 ## OPTIONAL - A randomly generated alphabetical string used to autheticate between Lightstep and your AWS account. Default: <none>
-# external_id = ""
+external_id = "foo"
 
 ## OPTIONAL - select your AWS region
 ## The AWS region associated with your CloudWatch metric stream and Kinesis firehose,

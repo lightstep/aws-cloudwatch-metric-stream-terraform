@@ -10,30 +10,51 @@
 # Please set the `upgrade_to_streams` variable to `true` before applying this terraform.
 
 
+
+# Default policy when no external id is provided
+data "aws_iam_policy_document" "lightstep_assume_role_policy" {
+  statement {
+    actions = [
+      "sts:AssumeRole",
+    ]
+    
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::297975325230:root"]
+    }
+  }
+}
+
+
+# When an external id is provided, we configure a condition on role assumption
+data "aws_iam_policy_document" "lightstep_assume_role_policy_with_xid" {
+  statement {
+    actions = [
+      "sts:AssumeRole",
+    ]
+    
+    principals {
+      type        = "AWS"
+      identifiers = ["arn:aws:iam::297975325230:root"]
+    }
+
+    condition {
+      test     = "StringEquals"
+      variable = "sts:ExternalId"
+
+      values = [
+        "${var.external_id}",
+      ]
+    }
+  }
+}
+
 resource "aws_iam_role" "lightstep_role" {
   count       = var.upgrade_to_streams ? 0 : 1
   name        = "LightstepAWSIntegrationRole"
   description = "Role that Lightstep will assume as part of CloudWatch integration"
 
-  assume_role_policy = <<EOF
-{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "arn:aws:iam::297975325230:root"
-      },
-      "Action": "sts:AssumeRole",
-      "Condition": {
-        "StringEquals": {
-          "sts:ExternalId": "${var.external_id}"
-        }
-      }
-    }
-  ]
-}
-EOF
+  assume_role_policy = var.external_id == "" ? data.aws_iam_policy_document.lightstep_assume_role_policy.json : data.aws_iam_policy_document.lightstep_assume_role_policy_with_xid.json
 }
 
 resource "aws_iam_policy" "lightstep_policy" {
