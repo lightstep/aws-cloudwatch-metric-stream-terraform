@@ -16,8 +16,6 @@ resource "random_string" "external_id" {
   override_special = "_=,.@:/-"
 }
 
-
-# When an external id is provided, we configure a condition on role assumption
 data "aws_iam_policy_document" "lightstep_assume_role_policy" {
   statement {
     actions = [
