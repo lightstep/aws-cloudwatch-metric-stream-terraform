@@ -10,13 +10,10 @@ lightstep_access_token           = "<lightstep-access-token-here>"
 ## OPTIONAL - restrict the metric stream to a list of namespaces
 ## Leaving this empty will include ALL namespaces
 namespace_list = [
-  # "AWS/ApiGateway",
-  # "AWS/Lambda",
+  "AWS/ApiGateway",
+  "AWS/Lambda",
   # ...
 ]
-
-## OPTIONAL - A randomly generated string used to autheticate between Lightstep and your AWS account. Default: <none>
-# external_id = "RandomString"
 
 ## OPTIONAL - select your AWS region
 ## The AWS region associated with your CloudWatch metric stream and Kinesis firehose,
