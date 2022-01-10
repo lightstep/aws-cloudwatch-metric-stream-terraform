@@ -10,8 +10,8 @@ lightstep_access_token           = "<lightstep-access-token-here>"
 ## OPTIONAL - restrict the metric stream to a list of namespaces
 ## Leaving this empty will include ALL namespaces
 namespace_list = [
-  "AWS/ApiGateway",
-  "AWS/Lambda",
+  #"AWS/ApiGateway",
+  #"AWS/Lambda",
   # ...
 ]
 
