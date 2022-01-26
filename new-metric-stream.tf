@@ -1,7 +1,3 @@
-
-
-
-
 resource "aws_cloudwatch_metric_stream" "main" {
   name          = var.metric_stream_name
   role_arn      = aws_iam_role.lightstep_metric_stream.arn
@@ -96,7 +92,7 @@ resource "aws_kinesis_firehose_delivery_stream" "lightstep" {
   server_side_encryption {
     enabled = false
   }
-  
+
 }
 
 
@@ -146,25 +142,25 @@ data "aws_iam_policy_document" "lightstep_firehose_s3_backup" {
 
 ## Kinesis Firehose - S3 error/backup bucket
 resource "aws_s3_bucket" "lightstep_firehose_backup" {
-  bucket = "${var.firehose_name}-firehose-s3-backup-${data.aws_caller_identity.current.account_id}"
+  bucket        = "${var.firehose_name}-firehose-s3-backup-${data.aws_caller_identity.current.account_id}"
   force_destroy = true
   lifecycle_rule {
     id      = "expiration"
     enabled = true
 
     expiration {
-        days = var.expiration_days
+      days = var.expiration_days
     }
   }
 }
 
 ## no public access allowed to the backup bucket
 resource "aws_s3_bucket_public_access_block" "backup_bucket_no_public_access" {
-  bucket = "${aws_s3_bucket.lightstep_firehose_backup.id}"
-  block_public_acls = true
-  block_public_policy = true
+  bucket                  = aws_s3_bucket.lightstep_firehose_backup.id
+  block_public_acls       = true
+  block_public_policy     = true
   restrict_public_buckets = true
-  ignore_public_acls = true
+  ignore_public_acls      = true
 }
 
 

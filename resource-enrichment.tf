@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "lightstep_assume_role_policy" {
     actions = [
       "sts:AssumeRole",
     ]
-    
+
     principals {
       type        = "AWS"
       identifiers = ["arn:aws:iam::297975325230:root"]

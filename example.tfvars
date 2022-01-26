@@ -4,7 +4,7 @@
 
 ## REQUIRED - your Lightstep project access token
 ## See https://docs.lightstep.com/docs/create-and-manage-access-tokens
-lightstep_access_token           = "<lightstep-access-token-here>"
+lightstep_access_token = "<lightstep-access-token-here>"
 
 
 ## OPTIONAL - restrict the metric stream to a list of namespaces
