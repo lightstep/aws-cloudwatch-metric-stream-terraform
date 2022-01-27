@@ -67,3 +67,16 @@ variable "upgrade_to_streams" {
   type        = bool
   default     = false
 }
+
+variable "integration_policy_name" {
+  description = "Name of the Lightstep IAM policy for enrichement."
+  type        = string
+  default     = "LightstepAWSIntegrationPolicy"
+}
+
+variable "integration_role_name" {
+  description = "Name of the Lightstep IAM role for enrichement."
+  type        = string
+  default     = "LightstepAWSIntegrationRole"
+}
+
