@@ -12,6 +12,7 @@ resource "aws_cloudwatch_metric_stream" "main" {
       namespace = item.value
     }
   }
+  tags = var.tags
 }
 
 
@@ -92,7 +93,7 @@ resource "aws_kinesis_firehose_delivery_stream" "lightstep" {
   server_side_encryption {
     enabled = false
   }
-
+  tags = var.tags
 }
 
 
@@ -152,6 +153,7 @@ resource "aws_s3_bucket" "lightstep_firehose_backup" {
       days = var.expiration_days
     }
   }
+  tags = var.tags
 }
 
 ## no public access allowed to the backup bucket

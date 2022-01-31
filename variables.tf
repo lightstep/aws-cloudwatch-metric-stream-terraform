@@ -80,3 +80,8 @@ variable "integration_role_name" {
   default     = "LightstepAWSIntegrationRole"
 }
 
+variable "tags" {
+  description = "A map of tags to assign to resources."
+  type        = map(string)
+  default     = {}
+}
