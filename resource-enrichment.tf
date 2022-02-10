@@ -21,7 +21,7 @@ data "aws_iam_policy_document" "lightstep_assume_role_policy" {
     actions = [
       "sts:AssumeRole",
     ]
-    
+
     principals {
       type        = "AWS"
       identifiers = ["arn:aws:iam::297975325230:root"]
@@ -40,7 +40,7 @@ data "aws_iam_policy_document" "lightstep_assume_role_policy" {
 
 resource "aws_iam_role" "lightstep_role" {
   count       = var.upgrade_to_streams ? 0 : 1
-  name        = "LightstepAWSIntegrationRole"
+  name        = var.integration_role_name
   description = "Role that Lightstep will assume as part of CloudWatch integration"
 
   assume_role_policy = data.aws_iam_policy_document.lightstep_assume_role_policy.json
@@ -48,7 +48,7 @@ resource "aws_iam_role" "lightstep_role" {
 
 resource "aws_iam_policy" "lightstep_policy" {
   count       = var.upgrade_to_streams ? 0 : 1
-  name        = "LightstepAWSIntegrationPolicy"
+  name        = var.integration_policy_name
   description = "Policy associated with LightstepAWSIntegrationRole"
 
   policy = <<EOF
