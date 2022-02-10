@@ -142,17 +142,22 @@ data "aws_iam_policy_document" "lightstep_firehose_s3_backup" {
 }
 
 ## Kinesis Firehose - S3 error/backup bucket
-resource "aws_s3_bucket" "lightstep_firehose_backup" {
-  bucket        = "${var.firehose_name}-firehose-s3-backup-${data.aws_caller_identity.current.account_id}"
-  force_destroy = true
-  lifecycle_rule {
-    id      = "expiration"
-    enabled = true
+resource "aws_s3_bucket_lifecycle_configuration" "lightstep_firehose_backup_bucket_config" {
+  bucket = aws_s3_bucket.lightstep_firehose_backup.bucket
+  rule {
+    id = "expiration"
 
     expiration {
       days = var.expiration_days
     }
+    status = "Enabled"
   }
+}
+
+resource "aws_s3_bucket" "lightstep_firehose_backup" {
+  bucket        = "${var.firehose_name}-firehose-s3-backup-${data.aws_caller_identity.current.account_id}"
+  force_destroy = true
+
   tags = var.tags
 }
 
